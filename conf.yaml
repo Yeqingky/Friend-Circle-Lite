@@ -59,6 +59,6 @@ smtp:
 # 解释：用于指定特殊RSS地址，如B站专栏等不常见RSS地址后缀，可以添加多个
 #   name:               友链名称
 #   url:                指定的RSS地址
-#specific_RSS:
+specific_RSS:
 #   - name: "阮一峰"
 #     url: "http://feeds.feedburner.com/ruanyifeng"
