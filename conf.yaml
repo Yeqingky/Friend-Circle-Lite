@@ -62,3 +62,5 @@ smtp:
 specific_RSS:
    - name: "夜轻Blog"
      url: "https://blog.yeqing.net/feed"
+  # - name: "無名小栈"
+  #   url: "https://blog.imsyy.top/rss.xml"
