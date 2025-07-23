@@ -9,10 +9,10 @@
 spider_settings:
   enable: true
   json_url: "https://raw.githubusercontent.com/Yeqingky/Friend-Circle-Lite/main/friend.json"
-  article_count: 5
+  article_count: 50
   merge_result:
     enable: false
-    merge_json_url: "https://fc.liushen.fun"
+    merge_json_url: "https://friend.emocc.cn"
 
 # 邮箱推送功能配置，暂未实现，等待后续开发
 # 解释：每天为指定邮箱推送所有友链文章的更新，仅能指定一个
