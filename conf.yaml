@@ -62,5 +62,5 @@ smtp:
 specific_RSS:
    - name: "yyyyt的文档站"
      url: "https://docs.yyyyt.top/rss.xml"
-  # - name: "無名小栈"
-  #   url: "https://blog.imsyy.top/rss.xml"
+   - name: "鈴奈咲桜のBlog"
+     url: "https://blog.sakura.ink/rss.xml"
