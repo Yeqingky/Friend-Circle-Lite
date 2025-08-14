@@ -64,3 +64,5 @@ specific_RSS:
      url: "https://docs.yyyyt.top/rss.xml"
    - name: "鈴奈咲桜のBlog"
      url: "https://blog.sakura.ink/rss.xml"
+   - name: "r1a dev"
+     url: "https://dev.oneall.eu.org/feed/"
