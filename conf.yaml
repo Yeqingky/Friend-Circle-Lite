@@ -70,3 +70,5 @@ specific_RSS:
      url: "https://www.yunsen2025.top/feed/"
    - name: "夜轻Blog"
      url: "https://blog.yeqing.net/atom.xml"
+   - name: "浪小舟"
+     url: "https://blog.lonzov.top/rss.xml"
