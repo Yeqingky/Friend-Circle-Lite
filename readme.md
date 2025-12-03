@@ -356,8 +356,8 @@
         }
     }
 </script>
-<link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/willow-god/Friend-Circle-Lite/main/fclite.min.css">
-<script src="https://fastly.jsdelivr.net/gh/willow-god/Friend-Circle-Lite/main/fclite.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdmirror.com/gh/Yeqingky/Friend-Circle-Lite/main/fclite.min.css">
+<script src="https://cdn.jsdmirror.com/gh/Yeqingky/Friend-Circle-Lite/main/fclite.min.js"></script>
 ```
 
 其中第一个地址填入你自己的地址即可，**注意**尾部带`/`，不要遗漏。
