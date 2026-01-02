@@ -66,3 +66,5 @@ specific_RSS:
      url: "https://blog.yeqing.net/atom.xml"
    - name: "青序栈"
      url: "https://www.qixz.cn/atom.xml"
+   - name: "r1a dev"
+     url: "https://dev.oneall.eu.org/feed/"
