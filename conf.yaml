@@ -72,3 +72,5 @@ specific_RSS:
      url: "https://blog.yeqing.net/atom.xml"
    - name: "浪小舟"
      url: "https://blog.lonzov.top/rss.xml"
+   - name: "青序栈"
+     url: "https://www.qixz.cn/atom.xml"
