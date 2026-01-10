@@ -72,3 +72,5 @@ specific_RSS:
      url: "https://koxiuqiu.cn/atom.xml"
    - name: "二叉树树"
      url: "https://blog.acofork.com/rss.xml"
+   - name: "Tavre Blog"
+     url: "https://blog.tavr.top/rss.xml"
