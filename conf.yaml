@@ -70,3 +70,5 @@ specific_RSS:
      url: "https://dev.oneall.eu.org/feed/"
    - name: "朽丘秋雨"
      url: "https://koxiuqiu.cn/atom.xml"
+   - name: "二叉树树"
+     url: "https://blog.acofork.com/rss.xml"
