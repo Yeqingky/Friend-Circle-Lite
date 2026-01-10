@@ -67,7 +67,7 @@ specific_RSS:
    - name: "青序栈"
      url: "https://www.qixz.cn/atom.xml"
    - name: "r1a dev"
-     url: "https://dev.oneall.eu.org/feed/"
+     url: "https://dev.oneall.eu.org/feed/atom"
    - name: "朽丘秋雨"
      url: "https://koxiuqiu.cn/atom.xml"
    - name: "二叉树树"
