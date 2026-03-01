@@ -70,3 +70,5 @@ specific_RSS:
      url: "https://2x.nz/rss.xml"
    - name: "Tavre Blog"
      url: "https://blog.tavr.top/rss.xml"
+   - name: "solaireh3"
+     url: "https://Ashlord.com/feed.xml"  
