@@ -9,6 +9,8 @@ from friend_circle_lite.utils.mail import send_emails
 from friend_circle_lite.single_friend import get_latest_articles_from_link
 from friend_circle_lite.utils.github import extract_emails_from_issues
 
+FUTURE_ARTICLE_TOLERANCE_DAYS = 2
+
 # ========== 日志设置 ==========
 logging.basicConfig(
     level=logging.INFO,
@@ -49,7 +51,8 @@ if config["spider_settings"]["enable"]:
     article_count = len(result.get("article_data", []))
     logging.info(f"📦 数据获取完毕，共有 {article_count} 篇文章，正在处理数据")
 
-    result = deal_with_large_data(result)
+    future_tolerance_days = FUTURE_ARTICLE_TOLERANCE_DAYS
+    result = deal_with_large_data(result, future_tolerance_days=future_tolerance_days)
 
     write_json("./all.json", result)
     write_json("./errors.json", lost_friends)

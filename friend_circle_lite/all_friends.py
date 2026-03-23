@@ -1,7 +1,7 @@
 import string
 import requests
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -146,12 +146,13 @@ def fetch_and_process_data(json_url: str, specific_RSS: list = None, count: int 
 
     return result, error_friends_info
 
-def sort_articles_by_time(data):
+def sort_articles_by_time(data, future_tolerance_days=2):
     """
-    对文章数据按时间排序
+    对文章数据按时间排序，并过滤严重超前于当前时间的文章
 
     参数：
     data (dict): 包含文章信息的字典
+    future_tolerance_days (int): 允许文章发布时间最多超前当前时间的天数
 
     返回：
     dict: 按时间排序后的文章信息字典
@@ -162,14 +163,33 @@ def sort_articles_by_time(data):
             article['created'] = '2024-01-01 00:00'
             # 输出警告信息
             logging.warning(f"文章 {article['title']} 未包含时间信息，已设置为默认时间 2024-01-01 00:00")
-    
+
+    now = datetime.now(ZoneInfo("Asia/Shanghai")).replace(tzinfo=None)
+    max_allowed_time = now + timedelta(days=future_tolerance_days)
+
     if 'article_data' in data:
+        filtered_articles = []
+        removed_count = 0
+
+        for article in data['article_data']:
+            article_time = datetime.strptime(article['created'], '%Y-%m-%d %H:%M')
+            if article_time > max_allowed_time:
+                removed_count += 1
+                logging.warning(
+                    f"文章 {article['title']} 的时间 {article['created']} 超出当前时间 {future_tolerance_days} 天以上，已跳过显示"
+                )
+                continue
+            filtered_articles.append(article)
+
         sorted_articles = sorted(
-            data['article_data'],
+            filtered_articles,
             key=lambda x: datetime.strptime(x['created'], '%Y-%m-%d %H:%M'),
             reverse=True
         )
         data['article_data'] = sorted_articles
+
+        if removed_count:
+            logging.info(f"已过滤 {removed_count} 篇未来时间异常的文章")
     return data
 
 def marge_data_from_json_url(data, marge_json_url):
@@ -225,18 +245,20 @@ def marge_errors_from_json_url(errors, marge_json_url):
     logging.info(f"合并错误信息完成，合并后共有 {len(filtered_errors)} 位朋友")
     return filtered_errors
 
-def deal_with_large_data(result):
+def deal_with_large_data(result, future_tolerance_days=2):
     """
     处理文章数据，保留前150篇及其作者在后续文章中的出现。
     
     参数：
     result (dict): 包含统计数据和文章数据的字典。
+    future_tolerance_days (int): 允许文章发布时间最多超前当前时间的天数。
     
     返回：
     dict: 处理后的数据，只包含需要的文章。
     """
-    result = sort_articles_by_time(result)
+    result = sort_articles_by_time(result, future_tolerance_days=future_tolerance_days)
     article_data = result.get("article_data", [])
+    result["statistical_data"]["article_num"] = len(article_data)
 
     # 检查文章数量是否大于 150
     max_articles = 150
